@@ -7,9 +7,6 @@ import argparse
 from collections import defaultdict
 
 
-# genai.configure(api_key='AIzaSyB-hDCrvwhWMsLndJ9xSKU5CWw1FUP5AzM')
-genai.configure(api_key='AIzaSyAKID8in2j3g_vYPE6Y9p8c03QZVOa9GAQ')
-
 def encode_example(weather_parameters: list[str], mcq: list[str], area_ans: int, concerning_ans: str, example_id: int, hint=None) ->  list[str]:
     assert len(mcq) == 4, 'the length of multiple choice is set to 4'
     mapping = {0: "A", 1: "B", 2: "C", 3: "D", 4: "E", 5: "F", 6: "G", 7: "H", 8: "I", 9: "J", 10: "K", 11: "L", 12: "M"}
@@ -79,9 +76,7 @@ def image_description(image_list: list, time: str, description_map: dict):
 
 
 if __name__ == "__main__":
-    # model = genai.GenerativeModel(model_name='gemini-1.5-flash-latest',
-    #                           system_instruction=sys_prompt,
-    #                           generation_config={"response_mime_type": "application/json", "temperature":0.1,"max_output_tokens":192})
+
     parser = argparse.ArgumentParser(description="settings")
     parser.add_argument("-s", "--save_path", type=str, default="./tmp_data", help="output results file path")
     parser.add_argument("-i", "--input_path", type=str, default="./tmp_data", help="input prompt file path")

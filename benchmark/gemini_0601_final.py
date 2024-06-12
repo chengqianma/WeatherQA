@@ -32,9 +32,6 @@ def format_message(image_list: list, question: str, time: str, area_choices: lis
     return output
 
 if __name__ == "__main__":
-    # model = genai.GenerativeModel(model_name='gemini-1.5-flash-latest',
-    #                           system_instruction=sys_prompt,
-    #                           generation_config={"response_mime_type": "application/json", "temperature":0.1,"max_output_tokens":192})
     parser = argparse.ArgumentParser(description="settings")
     parser.add_argument("-s", "--save_path", type=str, default="./tmp_data", help="output results file path")
     parser.add_argument("-i", "--input_path", type=str, default="./tmp_data", help="input prompt file path")
