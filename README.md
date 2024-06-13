@@ -19,7 +19,7 @@ WeatherQA is the first multimodal dataset designed for machines to reason about 
       "./md_image/2018/tadv/md0398_20180513_17_tadv.gif",
       "./md_image/2018/lclh/md0398_20180513_17_lclh.gif",
       "./md_image/2018/epvl/md0398_20180513_17_epvl.gif",
-      "./md_image/2018/laps/md0398_20180513_17_laps.gif", 
+      "./md_image/2018/laps/md0398_20180513_17_laps.gif",
       "./md_image/2018/mcsm/md0398_20180513_17_mcsm.gif",
       "./md_image/2018/rgnlrad_cropped/md0398_20180513_17_rgnlrad.gif",
       "./md_image/2018/mcon/md0398_20180513_17_mcon.gif",
@@ -35,12 +35,9 @@ WeatherQA is the first multimodal dataset designed for machines to reason about 
       "./md_image/2018/fzlv/md0398_20180513_17_fzlv.gif",
       "./md_image/2018/pchg/md0398_20180513_17_pchg.gif"
     ],
-    "annotations": "Areas affected...portions of southeast OH...northern WV including\nPanhandle...western MD...southwest PA...northwest VA
-                    Concerning...Severe potential...Watch possible \n\nProbability of Watch Issuance...60 percent
-                    SUMMARY...Isolated to widely scattered thunderstorms may develop\nthis afternoon and move southeast, with a risk for large hail and\ndamaging winds.  
-                    A tornado or two will also be possible.  A Severe Thunderstorm Watch may be needed prior to 20Z/4 pm EDT.",
+    "annotations": "Areas affected...portions of southeast OH...northern WV including Panhandle...western MD...southwest PA...northwest VA Concerning...Severe potential...Watch possible Probability of Watch Issuance...60  percent SUMMARY...Isolated to widely scattered thunderstorms may develop this afternoon and move southeast, with a risk for large hail and damaging winds. A tornado or two will also be possible. A Severe Thunderstorm Watch may be needed prior to 20Z/4 pm EDT.",
     "time": "05 / 13, 17UTC"
-  }
+  } 
 }
 ```
 #### Notes:
