@@ -19,7 +19,7 @@ WeatherQA is the first multimodal dataset designed for machines to reason about 
       "./md_image/2018/tadv/md0398_20180513_17_tadv.gif",
       "./md_image/2018/lclh/md0398_20180513_17_lclh.gif",
       "./md_image/2018/epvl/md0398_20180513_17_epvl.gif",
-      "./md_image/2018/laps/md0398_20180513_17_laps.gif",
+      "./md_image/2018/laps/md0398_20180513_17_laps.gif", 
       "./md_image/2018/mcsm/md0398_20180513_17_mcsm.gif",
       "./md_image/2018/rgnlrad_cropped/md0398_20180513_17_rgnlrad.gif",
       "./md_image/2018/mcon/md0398_20180513_17_mcon.gif",
@@ -35,9 +35,9 @@ WeatherQA is the first multimodal dataset designed for machines to reason about 
       "./md_image/2018/fzlv/md0398_20180513_17_fzlv.gif",
       "./md_image/2018/pchg/md0398_20180513_17_pchg.gif"
     ],
-    "annotations": "Areas affected...portions of southeast OH...northern WV including Panhandle...western MD...southwest PA...northwest VA Concerning...Severe potential...Watch possible Probability of Watch Issuance...60  percent SUMMARY...Isolated to widely scattered thunderstorms may develop this afternoon and move southeast, with a risk for large hail and damaging winds. A tornado or two will also be possible. A Severe Thunderstorm Watch may be needed prior to 20Z/4 pm EDT.",
+    "annotations": "Areas affected...portions of southeast OH...northern WV including Panhandle...western MD...southwest PA...northwest VA Concerning...Severe potential...Watch possible Probability of Watch Issuance...60 percent SUMMARY...Isolated to widely scattered thunderstorms may develop this afternoon and move southeast, with a risk for large hail and damaging winds. A tornado or two will also be possible.  A Severe Thunderstorm Watch may be needed prior to 20Z/4 pm EDT.",
     "time": "05 / 13, 17UTC"
-  } 
+  }
 }
 ```
 #### Notes:
@@ -134,7 +134,7 @@ Each data sample in the `samples` array includes the following fields:
 
 Below is an example of the few-shot/0-shot test dataset structure in JSON format; the only difference in CoT is in the `prompt_template`:
 
-```json
+```json5
 {
   "sys_prompt": "As an AI assistant with expertise in severe weather analysis and forecasting, ...",
   "prompt_template": "",
@@ -142,23 +142,23 @@ Below is an example of the few-shot/0-shot test dataset structure in JSON format
   "samples": [
     {
       "md_id": "",
-      "para_paths": [],
+      "para_paths":,
       "time": "",
       "choices": "",
       "area_ans": "",
       "concern_ans": "",
-      "examples": [
+      "examples":  [     
         {
-          "md_id": "",
-          "para_paths": [],
-          "time": "",
-          "choices": "",
-          "area_ans": "",
-          "concern_ans": ""
-        }
+            "md_id": "",
+            "para_paths":,
+            "time": "",
+            "choices": "",
+            "area_ans": "",
+            "concern_ans": "",
+        },
         // Repeat N times for few-shot, otherwise ignore 'examples' for 0-shot
       ]
-    }
+    },
     // Up to 600 samples
   ]
 }
@@ -182,7 +182,7 @@ The test script is designed to run tests on different proprietary language model
 
 2. **Install required Python packages**:
     ```bash
-    pip install -r requirements.txt
+    pip install -r benchmark/requirements.txt
     ```
 
 3. **Set up your environment**:
@@ -200,6 +200,9 @@ The script is configured using several variables:
 - `MODEL`: Specifies the model to use (`GPT`, `Gemini`, or `Claude`).
 - `FEWSHOT`: Boolean flag to indicate whether to use few-shot learning (`true` or `false`).
 - `MODEL_ID`: The specific model ID to use.
+  - `GPT`: `gpt-4o-2024-05-13`; `gpt-4-turbo-2024-04-09`
+  - `Gemini`: `gemini-1.5-flash-latest`; `gemini-1.5-pro-latest`
+  - `Claude`: `claude-3-opus-20240229`
 - `API_KEY`: Your API key for accessing the model.
 - `PROMPT_PATH`: Path to the input JSON file containing the prompts.
 - `RESULT_PATH`: Path to the output JSON file where results will be saved.
@@ -210,8 +213,8 @@ The script is configured using several variables:
     - Set the `MODEL`, `FEWSHOT`, `MODEL_ID`, `API_KEY`, `PROMPT_PATH`, and `RESULT_PATH` variables as needed.
 
 2. **Run the script**:
-    ```bash
-    ./test.sh
+    ```
+    bash ./scripts/test.sh
     ```
 
 ### Example
@@ -223,7 +226,6 @@ MODEL='GPT'
 FEWSHOT=true
 MODEL_ID='gpt-4o-2024-05-13'
 API_KEY='Your API Key'
-PROMPT_PATH=/gscratch/ubicomp/cm74/climate/processed_prompt/WeatherQA_test_3_shot_mcq_cls_600.json
-RESULT_PATH=/gscratch/ubicomp/cm74/climate/sota_test/results/final.json
+PROMPT_PATH=WeatherQA_test_3_shot_mcq_cls_600.json
+RESULT_PATH=result.json
 ```
-
