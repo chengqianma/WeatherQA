@@ -1,8 +1,8 @@
 # WeatherQA Dataset Description
 WeatherQA is the first multimodal dataset designed for machines to reason about complex combinations of weather parameters and predict severe weather in real-world scenarios. Each entry includes:
-- A set of 20 images from the Mesoscale Analysis Archive
-- An annotation from Mesoscale Discussion describing the weather conditions and potential severe weather threats
-
+- A set of 20 images from the [Mesoscale Analysis Archive](https://www.spc.noaa.gov/exper/ma_archive/)
+- An annotation from [Mesoscale Discussion](https://www.spc.noaa.gov/products/md/) describing the weather conditions and potential severe weather threats
+- The data is licensed under the copyright of [NOAA](https://www.noaa.gov/)
 
 ## WeatherQA Dataset
 
@@ -106,7 +106,8 @@ md_image/
 - Each year directory (e.g., `2020/`, `2019/`) contains subdirectories for different weather parameters.
 - Each parameter directory contains image files named according to the specified convention.
 
-
+### Data Curation Process
+TBD
 
 ## Test Dataset Structure
 The provided test dataset structure includes the necessary prompt inputs for the multimodal models.
@@ -164,3 +165,68 @@ Below is an example of the few-shot/0-shot test dataset structure in JSON format
     ... Up to 600 samples
   ]
 }
+```
+## Benchmark
+
+The test script is designed to run tests on different proprietary language models (GPT, Gemini, Claude) using either few-shot or zero-shot learning. 
+
+### Prerequisites
+
+- Python 3.x
+- Required Python packages (ensure you have the necessary packages installed, such as `requests`, `json`, etc.)
+
+### Setup
+
+1. **Clone the repository** (if applicable):
+    ```bash
+    git clone <repository_url>
+    cd <repository_directory>
+    ```
+
+2. **Install required Python packages**:
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+3. **Set up your environment**:
+    - Ensure you have your API key ready.
+    - Update the `API_KEY` variable in the script with your actual API key.
+
+4. **Prepare your input data**:
+    - Mesoscale Analysis Dataset (`md_image` folder) is in the same directory as the script.
+
+
+### Script Configuration
+
+The script is configured using several variables:
+
+- `MODEL`: Specifies the model to use (`GPT`, `Gemini`, or `Claude`).
+- `FEWSHOT`: Boolean flag to indicate whether to use few-shot learning (`true` or `false`).
+- `MODEL_ID`: The specific model ID to use.
+- `API_KEY`: Your API key for accessing the model.
+- `PROMPT_PATH`: Path to the input JSON file containing the prompts.
+- `RESULT_PATH`: Path to the output JSON file where results will be saved.
+
+### Usage
+
+1. **Modify the script**:
+    - Set the `MODEL`, `FEWSHOT`, `MODEL_ID`, `API_KEY`, `PROMPT_PATH`, and `RESULT_PATH` variables as needed.
+
+2. **Run the script**:
+    ```bash
+    ./test.sh
+    ```
+
+### Example
+
+Here is an example configuration:
+
+```bash
+MODEL='GPT'
+FEWSHOT=true
+MODEL_ID='gpt-4o-2024-05-13'
+API_KEY='Your API Key'
+PROMPT_PATH=/gscratch/ubicomp/cm74/climate/processed_prompt/WeatherQA_test_3_shot_mcq_cls_600.json
+RESULT_PATH=/gscratch/ubicomp/cm74/climate/sota_test/results/final.json
+```
+
