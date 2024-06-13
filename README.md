@@ -159,10 +159,10 @@ Below is an example of the few-shot/0-shot test dataset structure in JSON format
             "area_ans": "",
             "concern_ans": "",
         }
-        ... Repeat N times for few-shot, otherwise ignore 'examples' for 0-shot
+        // ... Repeat N times for few-shot, otherwise ignore 'examples' for 0-shot
       ]
     },
-    ... Up to 600 samples
+    // ... Up to 600 samples
   ]
 }
 ```
@@ -229,7 +229,7 @@ MODEL='GPT'
 FEWSHOT=true
 MODEL_ID='gpt-4o-2024-05-13'
 API_KEY='Your API Key'
-PROMPT_PATH=/gscratch/ubicomp/cm74/climate/processed_prompt/WeatherQA_test_3_shot_mcq_cls_600.json
-RESULT_PATH=/gscratch/ubicomp/cm74/climate/sota_test/results/final.json
+PROMPT_PATH=WeatherQA_test_3_shot_mcq_cls_600.json
+RESULT_PATH=result.json
 ```
 
