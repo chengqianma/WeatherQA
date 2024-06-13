@@ -142,24 +142,24 @@ Below is an example of the few-shot/0-shot test dataset structure in JSON format
   "samples": [
     {
       "md_id": "",
-      "para_paths":,
+      "para_paths": [],
       "time": "",
       "choices": "",
       "area_ans": "",
       "concern_ans": "",
-      "examples":  [     
+      "examples": [
         {
-            "md_id": "",
-            "para_paths":,
-            "time": "",
-            "choices": "",
-            "area_ans": "",
-            "concern_ans": "",
+          "md_id": "",
+          "para_paths": [],
+          "time": "",
+          "choices": "",
+          "area_ans": "",
+          "concern_ans": ""
         }
-        ... Repeat N times for few-shot, otherwise ignore 'examples' for 0-shot
+        // Repeat N times for few-shot, otherwise ignore 'examples' for 0-shot
       ]
-    },
-    ... Up to 600 samples
+    }
+    // Up to 600 samples
   ]
 }
 ```
