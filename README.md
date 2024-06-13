@@ -35,10 +35,7 @@ WeatherQA is the first multimodal dataset designed for machines to reason about 
       "./md_image/2018/fzlv/md0398_20180513_17_fzlv.gif",
       "./md_image/2018/pchg/md0398_20180513_17_pchg.gif"
     ],
-    "annotations": "Areas affected...portions of southeast OH...northern WV including\nPanhandle...western MD...southwest PA...northwest VA
-                    Concerning...Severe potential...Watch possible \n\nProbability of Watch Issuance...60 percent
-                    SUMMARY...Isolated to widely scattered thunderstorms may develop\nthis afternoon and move southeast, with a risk for large hail and\ndamaging winds.  
-                    A tornado or two will also be possible.  A Severe Thunderstorm Watch may be needed prior to 20Z/4 pm EDT.",
+    "annotations": "Areas affected...portions of southeast OH...northern WV including Panhandle...western MD...southwest PA...northwest VA Concerning...Severe potential...Watch possible Probability of Watch Issuance...60 percent SUMMARY...Isolated to widely scattered thunderstorms may develop this afternoon and move southeast, with a risk for large hail and damaging winds. A tornado or two will also be possible.  A Severe Thunderstorm Watch may be needed prior to 20Z/4 pm EDT.",
     "time": "05 / 13, 17UTC"
   }
 }
@@ -137,7 +134,7 @@ Each data sample in the `samples` array includes the following fields:
 
 Below is an example of the few-shot/0-shot test dataset structure in JSON format; the only difference in CoT is in the `prompt_template`:
 
-```json
+```json5
 {
   "sys_prompt": "As an AI assistant with expertise in severe weather analysis and forecasting, ...",
   "prompt_template": "",
@@ -158,11 +155,11 @@ Below is an example of the few-shot/0-shot test dataset structure in JSON format
             "choices": "",
             "area_ans": "",
             "concern_ans": "",
-        }
-        // ... Repeat N times for few-shot, otherwise ignore 'examples' for 0-shot
+        },
+        // Repeat N times for few-shot, otherwise ignore 'examples' for 0-shot
       ]
     },
-    // ... Up to 600 samples
+    // Up to 600 samples
   ]
 }
 ```
