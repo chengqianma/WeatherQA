@@ -185,7 +185,7 @@ The test script is designed to run tests on different proprietary language model
 
 2. **Install required Python packages**:
     ```bash
-    pip install -r requirements.txt
+    pip install -r benchmark/requirements.txt
     ```
 
 3. **Set up your environment**:
@@ -203,6 +203,9 @@ The script is configured using several variables:
 - `MODEL`: Specifies the model to use (`GPT`, `Gemini`, or `Claude`).
 - `FEWSHOT`: Boolean flag to indicate whether to use few-shot learning (`true` or `false`).
 - `MODEL_ID`: The specific model ID to use.
+  - `GPT`: `gpt-4o-2024-05-13`; `gpt-4-turbo-2024-04-09`
+  - `Gemini`: `gemini-1.5-flash-latest`; `gemini-1.5-pro-latest`
+  - `Claude`: `claude-3-opus-20240229`
 - `API_KEY`: Your API key for accessing the model.
 - `PROMPT_PATH`: Path to the input JSON file containing the prompts.
 - `RESULT_PATH`: Path to the output JSON file where results will be saved.
@@ -213,8 +216,8 @@ The script is configured using several variables:
     - Set the `MODEL`, `FEWSHOT`, `MODEL_ID`, `API_KEY`, `PROMPT_PATH`, and `RESULT_PATH` variables as needed.
 
 2. **Run the script**:
-    ```bash
-    ./test.sh
+    ```
+    bash ./scripts/test.sh
     ```
 
 ### Example
