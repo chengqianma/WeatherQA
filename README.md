@@ -168,8 +168,10 @@ Below is an example of the few-shot/0-shot test dataset structure in JSON format
 }
 ```
 ## Benchmark
+The benchmark script is designed to evaluate the performance of different proprietary language models (GPT, Gemini, Claude) using either few-shot or zero-shot w/o CoT.\
+The script uses the WeatherQA dataset to test the models' ability to predict the affected area and classify the development potential of severe convection based on the provided images and time from Mesoscale Analysis.
 
-The test script is designed to run tests on different proprietary language models (GPT, Gemini, Claude) using either few-shot or zero-shot learning. 
+![WeatherQA Benchmark](./figure/WeatherQA_bench.jpg)
 
 ### Prerequisites
 
