@@ -4,6 +4,10 @@ WeatherQA is the first multimodal dataset designed for machines to reason about 
 - An annotation from [Mesoscale Discussion](https://www.spc.noaa.gov/products/md/) describing the weather conditions and potential severe weather threats
 - The data is licensed under the copyright of [NOAA](https://www.noaa.gov/)
 
+![WeatherQA Dataset](./figure/WeatherQA_dataset.jpg)
+
+
+
 ## WeatherQA Dataset
 
 [Link to WeatherQA Dataset](https://drive.google.com/file/d/1Fwj0ISh-20E7KfHuho9TPwNbgkJ7rGOJ/)
