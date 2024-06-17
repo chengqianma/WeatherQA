@@ -4,6 +4,10 @@ WeatherQA is the first multimodal dataset designed for machines to reason about 
 - An annotation from [Mesoscale Discussion](https://www.spc.noaa.gov/products/md/) describing the weather conditions and potential severe weather threats
 - The data is licensed under the copyright of [NOAA](https://www.noaa.gov/)
 
+![WeatherQA Dataset](./figure/WeatherQA_dataset.jpg)
+
+
+
 ## WeatherQA Dataset
 
 [Link to WeatherQA Dataset](https://drive.google.com/file/d/1Fwj0ISh-20E7KfHuho9TPwNbgkJ7rGOJ/)
@@ -164,8 +168,10 @@ Below is an example of the few-shot/0-shot test dataset structure in JSON format
 }
 ```
 ## Benchmark
+The benchmark script is designed to evaluate the performance of different proprietary language models (GPT, Gemini, Claude) using either few-shot or zero-shot w/o CoT.\
+The script uses the WeatherQA dataset to test the models' ability to predict the affected area and classify the development potential of severe convection based on the provided images and time from Mesoscale Analysis.
 
-The test script is designed to run tests on different proprietary language models (GPT, Gemini, Claude) using either few-shot or zero-shot learning. 
+![WeatherQA Benchmark](./figure/WeatherQA_bench.jpg)
 
 ### Prerequisites
 
@@ -228,5 +234,6 @@ MODEL_ID='gpt-4o-2024-05-13'
 API_KEY='Your API Key'
 PROMPT_PATH=WeatherQA_test_3_shot_mcq_cls_600.json
 RESULT_PATH=result.json
+
 ```
 
