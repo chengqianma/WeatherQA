@@ -1,5 +1,8 @@
 # WeatherQA Dataset Description
-WeatherQA is the first multimodal dataset designed for machines to reason about complex combinations of weather parameters and predict severe weather in real-world scenarios. Each entry includes:
+WeatherQA is the first multimodal dataset designed for machines to reason about complex combinations of weather parameters and predict severe weather in real-world scenarios.\
+Link to the paper: [WeatherQA: Can Multimodal Language Models Reason about Severe Weather?](https://arxiv.org/abs/2406.11217)
+
+Each entry of WeatherQA includes:
 - A set of 20 images from the [Mesoscale Analysis Archive](https://www.spc.noaa.gov/exper/ma_archive/)
 - An annotation from [Mesoscale Discussion](https://www.spc.noaa.gov/products/md/) describing the weather conditions and potential severe weather threats
 - The data is licensed under the copyright of [NOAA](https://www.noaa.gov/)
@@ -52,7 +55,8 @@ WeatherQA is the first multimodal dataset designed for machines to reason about 
 
 ### Mesoscale Analysis Dataset (md_image)
 
-[Link to download Mesoscale Analysis Dataset](https://drive.google.com/file/d/1DGKiHCdMtoksymuA1OGe5d9dEiK4AvQR/view?usp=drive_link) currently only the year 2020 is uploaded.
+[2020 Mesoscale Analysis Dataset](https://drive.google.com/file/d/1DGKiHCdMtoksymuA1OGe5d9dEiK4AvQR/view?usp=drive_link) roughly 1.5GB \
+[2014-2019 Mesoscale Analysis Dataset](https://drive.google.com/file/d/1mViaf1f-sWB1DyfCrw-NwmZp4gj96mYr/view?usp=drive_link) roughly 10GB
 
 The Mesoscale Analysis Dataset contains 20 images, including:
 - 18 ingredients-based weather parameter images
@@ -173,6 +177,33 @@ The script uses the WeatherQA dataset to test the models' ability to predict the
 
 ![WeatherQA Benchmark](./figure/WeatherQA_bench.jpg)
 
+### Benchmark Results
+
+**Task 1: Accuracy of Areas Affected Multi-choice Question**
+
+| Model | 0-shot | 1-shot | 3-shot | 0-shot-CoT | 3-shot-CoT |
+|-------|--------|--------|--------|------------|------------|
+| Claude3 Opus | 20.67% | / | / | 19.17% | / |
+| GPT-4 Turbo | 21.33% | 24.17% | 27.00% | 23.50% | 23.33% |
+| GPT-4o | **36.83%** | **35.67%** | 38.83% | **38.17%** | **39.33%** |
+| Gemini Flash 1.5 | 30.67% | 33.00% | 34.33% | 31.17% | 30.67% |
+| Gemini Pro 1.5 | 31.50% | **35.67%** | **39.00%** | 33.56% | 33.06% |
+| Fine-tuned-VLM (Llama3 8B) | 28.17% | / | / | / | / |
+
+##
+
+**Task 2: Accuracy / Weighted F1 Score of Concerning Classification**
+
+| Model | 0-shot | 1-shot | 3-shot | 0-shot-CoT | 3-shot-CoT |
+|-------|--------|--------|--------|------------|------------|
+| Claude3 Opus | 3.50% / 0.01 | / | / | 3.33% / 0.01 | / |
+| GPT4-Turbo | 3.67% / 0.04 | 12.50% / 0.09 | 5.50% / 0.06 | 3.00% / 0.01 | 5.33% / 0.04 |
+| GPT4-o | 8.17% / 0.03 | 22.33% / **0.21** | **28.83%** / **0.31** | **8.00%** / **0.05** | 8.33% / 0.05 |
+| Gemini Flash 1.5 | 7.17% / 0.02 | 17.67% / 0.19 | 13.00% / 0.14 | 3.33% / 0.01 | 5.83% / 0.04 |
+| Gemini Pro 1.5 | 4.67% / 0.02 | **25.33%** / **0.21** | 24.17% / 0.21 | 2.67% / 0.01 | **18.70%** / **0.17** |
+| Fine-tuned-VLM (Llama3 8B) | **45.00%** / **0.42** | / | / | / | / |
+
+##
 ### Prerequisites
 
 - Python 3.x
