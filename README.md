@@ -186,7 +186,7 @@ The script uses the WeatherQA dataset to test the models' ability to predict the
 | Claude 3 Opus | 20.67% | / | / | 19.17% | / |
 | Claude 3.5 Sonnet | **41.17%** | / | / | **41.50%** | / |
 | GPT-4 Turbo | 21.33% | 24.17% | 27.00% | 23.50% | 23.33% |
-| GPT-4o | 36.83% | **35.67%** | 38.83% | **38.17%** | **39.33%** |
+| GPT-4o | 36.83% | **35.67%** | 38.83% | 38.17% | **39.33%** |
 | Gemini Flash 1.5 | 30.67% | 33.00% | 34.33% | 31.17% | 30.67% |
 | Gemini Pro 1.5 | 31.50% | **35.67%** | **39.00%** | 33.56% | 33.06% |
 | Fine-tuned-VLM (Llama3 8B) | 28.17% | / | / | / | / |
