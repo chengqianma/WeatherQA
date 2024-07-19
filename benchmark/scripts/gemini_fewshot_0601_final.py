@@ -95,7 +95,7 @@ if __name__ == "__main__":
     model = genai.GenerativeModel(MODEL,
                             system_instruction=data["sys_prompt"],
                             generation_config={"response_mime_type": "application/json", "temperature":0.1,"max_output_tokens":1024})
-    prompt_template = data["zero_shot_prompt_template"]
+    prompt_template = data["few_shot_prompt_template"]
     para_description = data["para_description"]
     media_type = "image/gif"
     time_sleep = 30
