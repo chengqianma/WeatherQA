@@ -111,8 +111,6 @@ md_image/
 - Each year directory (e.g., `2020/`, `2019/`) contains subdirectories for different weather parameters.
 - Each parameter directory contains image files named according to the specified convention.
 
-### Data Curation Process
-TBD
 
 ## Test Dataset Structure
 The provided test dataset structure includes the necessary prompt inputs for the multimodal models.
