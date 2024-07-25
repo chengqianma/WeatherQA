@@ -124,8 +124,8 @@ The dataset is designed to help interpret comprehensive figures related to sever
 - **samples**: Test data samples
 
 Test Dataset Download Links:
-- [3-shot](https://drive.google.com/file/d/13aKfHdXrPY12zaNhPGLfd1GLia-DwNel/view?usp=sharing)
-- [3-shot CoT](https://drive.google.com/file/d/1TNnjlXhK9L6zbNrNqGWf7Zxw0JO_fHb2/view?usp=sharing)
+- [Direct](https://drive.google.com/file/d/13aKfHdXrPY12zaNhPGLfd1GLia-DwNel/view?usp=sharing)
+- [CoT](https://drive.google.com/file/d/1TNnjlXhK9L6zbNrNqGWf7Zxw0JO_fHb2/view?usp=sharing)
 
 ### Test Data Samples Structure
 
@@ -206,30 +206,29 @@ The script uses the WeatherQA dataset to test the models' ability to predict the
 | Fine-tuned-VLM (Llama3 8B) | **45.00%** / **0.42** | / | / | / | / |
 
 ##
-### Prerequisites
-
-- Python 3.x
-- Required Python packages (ensure you have the necessary packages installed, such as `requests`, `json`, etc.)
 
 ### Setup
 
 1. **Clone the repository** (if applicable):
     ```bash
-    git clone <repository_url>
-    cd <repository_directory>
+    git clone https://github.com/chengqianma/WeatherQA.git
+    cd WeatherQA
     ```
 
-2. **Install required Python packages**:
+2. **Set up your environment**:
+    - Python 3.10 or higher
+
+3. **Install required Python packages**:
     ```bash
     pip install -r benchmark/requirements.txt
     ```
 
-3. **Set up your environment**:
-    - Ensure you have your API key ready.
+4. **Set up your API key**:
+    - Ensure you have your API key ready for the type of model you want to test.
     - Update the `API_KEY` variable in the script with your actual API key.
 
 4. **Prepare your input data**:
-    - Mesoscale Analysis Dataset (`md_image` folder) is in the same directory as the script.
+    - Mesoscale Analysis Dataset (`md_image` folder) is in the same directory as the `script` folder under `./benchmark`.
 
 
 ### Script Configuration
@@ -262,7 +261,7 @@ Here is an example configuration:
 
 ```bash
 MODEL='GPT'
-FEWSHOT=true
+FEWSHOT=true #true for 3-shot, false for 0-shot
 MODEL_ID='gpt-4o-2024-05-13'
 API_KEY='Your API Key'
 PROMPT_PATH=WeatherQA_test_3_shot_mcq_cls_600.json
