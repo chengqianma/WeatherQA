@@ -264,4 +264,6 @@ MODEL_ID='gpt-4o-2024-05-13'
 API_KEY='Your API Key'
 PROMPT_PATH=WeatherQA_test_3_shot_mcq_cls_600.json
 RESULT_PATH=result.json
+
 ```
+
