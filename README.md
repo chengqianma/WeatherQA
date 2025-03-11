@@ -13,7 +13,7 @@ Each entry of WeatherQA includes:
 
 ## WeatherQA Dataset
 
-[Link to WeatherQA Dataset](https://drive.google.com/file/d/1Fwj0ISh-20E7KfHuho9TPwNbgkJ7rGOJ/)
+[Link to WeatherQA Dataset](https://drive.google.com/file/d/1GpEp6EFrCA6wqU6FEHsaMO7jwTckP_m4/view?usp=sharing)
 
 #### Example of a Sample in the WeatherQA Dataset
 
@@ -55,7 +55,8 @@ Each entry of WeatherQA includes:
 
 ### Mesoscale Analysis Dataset (md_image)
 
-[2020 Mesoscale Analysis Dataset](https://drive.google.com/file/d/1DGKiHCdMtoksymuA1OGe5d9dEiK4AvQR/view?usp=drive_link) roughly 1.5GB \
+[2020 Mesoscale Analysis Dataset](https://drive.google.com/file/d/17Hfv2NOLpy6rJBUrghaZmU_7r6WDCuDs/view?usp=sharing) roughly 1.5GB  
+
 [2014-2019 Mesoscale Analysis Dataset](https://drive.google.com/file/d/1mViaf1f-sWB1DyfCrw-NwmZp4gj96mYr/view?usp=drive_link) roughly 10GB
 
 The Mesoscale Analysis Dataset contains 20 images, including:
