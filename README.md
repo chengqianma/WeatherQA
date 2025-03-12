@@ -123,8 +123,8 @@ The dataset is designed to help interpret comprehensive figures related to sever
 - **samples**: Test data samples
 
 Test Dataset Download Links:
-- [Direct](https://drive.google.com/file/d/13aKfHdXrPY12zaNhPGLfd1GLia-DwNel/view?usp=sharing)
-- [CoT](https://drive.google.com/file/d/1TNnjlXhK9L6zbNrNqGWf7Zxw0JO_fHb2/view?usp=sharing)
+- [Direct](https://drive.google.com/drive/folders/1fNyLOEiQ1R8sLWPQoq8RJVGwJoZBoqo0?usp=sharing)
+- [CoT](https://drive.google.com/drive/folders/1A9Ij3qB0uVi-Tydwue1KMRM2OKKf7ssW?usp=sharing)
 
 ### Test Data Samples Structure
 
