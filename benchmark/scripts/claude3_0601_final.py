@@ -70,7 +70,7 @@ if __name__ == "__main__":
     
     time_sleep = 15
     sys_prompt = data["sys_prompt"]
-    prompt_template = data["zero_shot_prompt_template"]
+    prompt_template = data["prompt_template"]
     para_description = data["para_description"]
     media_type = "image/gif"
     result = defaultdict(dict)
