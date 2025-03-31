@@ -9,7 +9,9 @@ Each entry of WeatherQA includes:
 
 ![WeatherQA Dataset](./figure/WeatherQA_dataset.jpg)
 
+## Updates
 
+*   **2025-03-31:** 🔥 We've released the `WeatherQA_SFT` dataset, specifically formatted for supervised fine-tuning, on Hugging Face! You can find details and usage instructions in the [Fine-tuning Dataset: WeatherQA_SFT](#fine-tuning-dataset-weatherqa_sft) section below. Additionally, the benchmark tables have been updated with results comparing **Fine-tuned** and **Pre-trained `QwenVL2.5-7B`** models, showcasing significant performance improvements achieved through fine-tuning on this dataset, particularly surpassing other state-of-the-art models in several configurations.
 
 ## WeatherQA Dataset
 
