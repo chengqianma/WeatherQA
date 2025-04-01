@@ -246,7 +246,7 @@ Performance comparison between the pre-trained (PT) QwenVL2.5-7B model and the m
 |                                    | Pre-trained | 27.50%                      | 3.64%                             |
 | **Three Images (rgnlrad, sbcp, shr6)** | Fine-tuned  | **70.33%**                  | **54.98%**                        |
 |                                    | Pre-trained | 26.83%                      | 5.59%                             |
-| Twenty Images                      | Fine-tuned  | 58.00%                      | 46.55%                            |
+| Twenty Images (default setting)                     | Fine-tuned  | 58.00%                      | 46.55%                            |
 |                                    | Pre-trained | 26.67%                      | 4.37%                             |
 
 *Note: The "Conditional Concern Accuracy" follows the same condition as noted for Task 2 above.*
