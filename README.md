@@ -15,7 +15,12 @@ Each entry of WeatherQA includes:
 
 ## WeatherQA Dataset
 
-[Link to WeatherQA Dataset](https://drive.google.com/file/d/1GpEp6EFrCA6wqU6FEHsaMO7jwTckP_m4/view?usp=sharing)
+[WeatherQA Raw Dataset](https://drive.google.com/file/d/1GpEp6EFrCA6wqU6FEHsaMO7jwTckP_m4/view?usp=sharing)
+[Test image: 2020 Mesoscale Analysis Dataset](https://drive.google.com/file/d/17Hfv2NOLpy6rJBUrghaZmU_7r6WDCuDs/view?usp=sharing) roughly 1.5GB  
+[Train image: 2014-2019 Mesoscale Analysis Dataset](https://drive.google.com/file/d/1mViaf1f-sWB1DyfCrw-NwmZp4gj96mYr/view?usp=drive_link) roughly 10GB
+[Train Dataset: WeatherQA_SFT](https://huggingface.co/datasets/ZhanxiangHua/WeatherQA_SFT)
+[Test Dataset: Direct](https://drive.google.com/drive/folders/1fNyLOEiQ1R8sLWPQoq8RJVGwJoZBoqo0?usp=sharing)
+[Test Dataset: CoT](https://drive.google.com/drive/folders/1A9Ij3qB0uVi-Tydwue1KMRM2OKKf7ssW?usp=sharing)
 
 #### Example of a Sample in the WeatherQA Dataset
 
@@ -196,7 +201,7 @@ The script uses the WeatherQA dataset to test the models' ability to predict the
 
 ### Benchmark Results
 
-Performance of various models on the WeatherQA benchmark tasks.
+Performance of various pre-trained models on the WeatherQA benchmark tasks.
 
 **Task 1: Accuracy of Areas Affected Multi-choice Question**
 
