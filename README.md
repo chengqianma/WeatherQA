@@ -326,4 +326,27 @@ PROMPT_PATH=WeatherQA_test_3_shot_mcq_cls_600.json
 RESULT_PATH=result.json
 
 ```
+### SFT(Qwen2.5-VL)
+We use [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) to train the SFT model.
+> 1. Clone the [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) repository and install the dependencies.
+```bash
+git clone https://github.com/hiyouga/LLaMA-Factory.git
+cd LLaMA-Factory
+pip install -e ".[torch,metrics]"
+```
 
+> 2. Download the WeatherQA SFT dataset we provided [here](https://huggingface.co/datasets/ZhanxiangHua/WeatherQA_SFT). Add the following dataset information to your data config. (e.g. data/dataset_info.json)
+  ```json
+  "wqa":{
+    "file_name": "you-path-to-data-json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "conversations",
+      "images": "image"
+    }
+  }
+  ```
+> 3. Modified the training config file to fit your training resources and run the following command to train the SFT model.
+```bash
+llamafactory-cli train path-to-your-training-config-file (e.g. examples/train/full/qwen2_5_vl_full_sft.yaml)
+```
