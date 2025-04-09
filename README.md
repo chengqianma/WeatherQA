@@ -328,48 +328,53 @@ PROMPT_PATH=WeatherQA_test_3_shot_mcq_cls_600.json
 RESULT_PATH=result.json
 
 ```
-### SFT(Qwen2.5-VL)
-We use [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) to train the SFT model.
-> 1. Clone the [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) repository and install the dependencies. You might also need to install [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) and [vllm](https://github.com/vllm-project/vllm) packages.
-```bash
-git clone https://github.com/hiyouga/LLaMA-Factory.git
-cd LLaMA-Factory
-pip install -e ".[torch,metrics]"
-```
+### SFT (Qwen2.5-VL)
 
-> 2. Download the required data:
->    *   Image Data Source (Potentially Needed): [Train: 2014-2019 Mesoscale Analysis Dataset](https://drive.google.com/file/d/1mViaf1f-sWB1DyfCrw-NwmZp4gj96mYr/view?usp=drive_link)
->    *   Training Data (JSON Format): [Train MCQ_ShareGPT Json](https://drive.google.com/file/d/1eXPgH0uQGNDaIgDp2wxHtA4gGqAvQiye/view?usp=sharing)
->
->    Configure your dataset using **one** of the following options:
->
->    **Option 1: Use Local JSON File**
->    Add the following configuration to your data config, replacing `"your-path-to/MCQ_ShareGPT.json"` with the actual path to the `Train MCQ_ShareGPT Json` file you downloaded:
->   ```json
->   "wqa":{
->     "file_name": "your-path-to/MCQ_ShareGPT.json",
->     "formatting": "sharegpt",
->     "columns": {
->       "messages": "conversations",
->       "images": "image"
->     }
->   }
->   ```
->
->    **Option 2: Use Hugging Face Dataset**
->    Alternatively, start SFT immediately with the `WeatherQA_SFT` dataset hosted on Hugging Face using this configuration:
->   ```json
->   "wqa":{
->     "hf_hub_url": "ZhanxiangHua/WeatherQA_SFT",
->     "formatting": "sharegpt",
->     "columns": {
->       "messages": "conversations",
->       "images": "image"
->     }
->   }
->   ```
+We use [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) to train the Supervised Fine-Tuning (SFT) model. Follow these steps:
 
-> 3. Modified the training config file to fit your training resources and run the following command to train the SFT model.
-```bash
-llamafactory-cli train path-to-your-training-config-file (e.g. examples/train/full/qwen2_5_vl_full_sft.yaml)
-```
+1.  **Clone LLaMA-Factory and Install Dependencies:**
+    Clone the repository and install the necessary packages. You might also need to install [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) and [vllm](https://github.com/vllm-project/vllm).
+    ```bash
+    git clone https://github.com/hiyouga/LLaMA-Factory.git
+    cd LLaMA-Factory
+    pip install -e ".[torch,metrics]"
+    ```
+
+2.  **Prepare the Dataset:**
+    *   Download the required data sources:
+        *   Image Data (Potentially Needed for reference/custom processing): [Train: 2014-2019 Mesoscale Analysis Dataset](https://drive.google.com/file/d/1mViaf1f-sWB1DyfCrw-NwmZp4gj96mYr/view?usp=drive_link)
+        *   Training Data (JSON Format): [Train MCQ\_ShareGPT Json](https://drive.google.com/file/d/1eXPgH0uQGNDaIgDp2wxHtA4gGqAvQiye/view?usp=sharing)
+
+    *   Configure your dataset within your LLaMA-Factory data configuration file (e.g., `data/dataset_info.json`) using **one** of the following methods:
+
+        **Method A: Use Local JSON File**
+        If you downloaded the `Train MCQ_ShareGPT Json`, add the following entry, replacing `"your-path-to/MCQ_ShareGPT.json"` with the actual file path:
+        ```json
+        "wqa":{
+          "file_name": "your-path-to/MCQ_ShareGPT.json",
+          "formatting": "sharegpt",
+          "columns": {
+            "messages": "conversations",
+            "images": "image"
+          }
+        }
+        ```
+
+        **Method B: Use Hugging Face Dataset**
+        Alternatively, use the pre-processed `WeatherQA_SFT` dataset directly from Hugging Face with this configuration:
+        ```json
+        "wqa":{
+          "hf_hub_url": "ZhanxiangHua/WeatherQA_SFT",
+          "formatting": "sharegpt",
+          "columns": {
+            "messages": "conversations",
+            "images": "image"
+          }
+        }
+        ```
+
+3.  **Configure and Start Training:**
+    Modify a training configuration file (e.g., `examples/train/full/qwen2_5_vl_full_sft.yaml`) to match your hardware resources and dataset choice. Then, run the training command:
+    ```bash
+    llamafactory-cli train path-to-your-training-config-file
+    ```
