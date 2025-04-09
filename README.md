@@ -17,9 +17,11 @@ Each entry of WeatherQA includes:
 
 #### Texts:
 
-* [Raw Dataset: WeatherQA](https://drive.google.com/file/d/1GpEp6EFrCA6wqU6FEHsaMO7jwTckP_m4/view?usp=sharing)
+* [Raw Dataset (Mesoscale Discussion): WeatherQA](https://drive.google.com/file/d/1GpEp6EFrCA6wqU6FEHsaMO7jwTckP_m4/view?usp=sharing)
 
-* [Train MCQ Dataset: WeatherQA_SFT](https://huggingface.co/datasets/ZhanxiangHua/WeatherQA_SFT)
+* [Train/Test MCQ Dataset: WeatherQA_SFT](https://huggingface.co/datasets/ZhanxiangHua/WeatherQA_SFT) preprocessed SFT ShareGPT dataset on Huggingface 
+
+* [Train MCQ_ShareGPT Json](https://drive.google.com/file/d/1eXPgH0uQGNDaIgDp2wxHtA4gGqAvQiye/view?usp=sharing) use with "Train: 2014-2019 Mesoscale Analysis Dataset" below for SFT
 
 * [Test MCQ Dataset: Direct](https://drive.google.com/drive/folders/1fNyLOEiQ1R8sLWPQoq8RJVGwJoZBoqo0?usp=sharing)
 
@@ -328,24 +330,45 @@ RESULT_PATH=result.json
 ```
 ### SFT(Qwen2.5-VL)
 We use [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) to train the SFT model.
-> 1. Clone the [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) repository and install the dependencies.
+> 1. Clone the [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) repository and install the dependencies. You might also need to install [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) and [vllm](https://github.com/vllm-project/vllm) packages.
 ```bash
 git clone https://github.com/hiyouga/LLaMA-Factory.git
 cd LLaMA-Factory
 pip install -e ".[torch,metrics]"
 ```
 
-> 2. Download the WeatherQA SFT dataset we provided [here](https://huggingface.co/datasets/ZhanxiangHua/WeatherQA_SFT). Add the following dataset information to your data config. (e.g. data/dataset_info.json)
-  ```json
-  "wqa":{
-    "file_name": "you-path-to-data-json",
-    "formatting": "sharegpt",
-    "columns": {
-      "messages": "conversations",
-      "images": "image"
-    }
-  }
-  ```
+> 2. Download the required data:
+>    *   Image Data Source (Potentially Needed): [Train: 2014-2019 Mesoscale Analysis Dataset](https://drive.google.com/file/d/1mViaf1f-sWB1DyfCrw-NwmZp4gj96mYr/view?usp=drive_link)
+>    *   Training Data (JSON Format): [Train MCQ_ShareGPT Json](https://drive.google.com/file/d/1eXPgH0uQGNDaIgDp2wxHtA4gGqAvQiye/view?usp=sharing)
+>
+>    Configure your dataset using **one** of the following options:
+>
+>    **Option 1: Use Local JSON File**
+>    Add the following configuration to your data config, replacing `"your-path-to/MCQ_ShareGPT.json"` with the actual path to the `Train MCQ_ShareGPT Json` file you downloaded:
+>   ```json
+>   "wqa":{
+>     "file_name": "your-path-to/MCQ_ShareGPT.json",
+>     "formatting": "sharegpt",
+>     "columns": {
+>       "messages": "conversations",
+>       "images": "image"
+>     }
+>   }
+>   ```
+>
+>    **Option 2: Use Hugging Face Dataset**
+>    Alternatively, start SFT immediately with the `WeatherQA_SFT` dataset hosted on Hugging Face using this configuration:
+>   ```json
+>   "wqa":{
+>     "hf_hub_url": "ZhanxiangHua/WeatherQA_SFT",
+>     "formatting": "sharegpt",
+>     "columns": {
+>       "messages": "conversations",
+>       "images": "image"
+>     }
+>   }
+>   ```
+
 > 3. Modified the training config file to fit your training resources and run the following command to train the SFT model.
 ```bash
 llamafactory-cli train path-to-your-training-config-file (e.g. examples/train/full/qwen2_5_vl_full_sft.yaml)
