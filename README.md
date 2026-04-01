@@ -11,7 +11,7 @@ Each entry of WeatherQA includes:
 
 ## Updates
 
-*   **2025-03-31:** 🔥 We've released the `WeatherQA_SFT` dataset, specifically formatted for supervised fine-tuning, on Hugging Face! You can find details and usage instructions in the [Fine-tuning Dataset: WeatherQA_SFT](#fine-tuning-dataset-weatherqa_sft) section below. Additionally, the benchmark tables have been updated with results comparing **Fine-tuned** and **Pre-trained `QwenVL2.5-7B`** models, showcasing significant performance improvements achieved through fine-tuning on this dataset, particularly surpassing other state-of-the-art models in several configurations.
+*   **2025-03-31:** 🔥 We've released the `WeatherQA_SFT` dataset, specifically formatted for supervised fine-tuning, on Hugging Face! You can find details and usage instructions in the [Fine-tuning Dataset: WeatherQA_SFT](#fine-tuning-dataset-weatherqa_sft) section below. Additionally, the benchmark tables have been updated with the latest zero-shot results, including a **fine-tuned `Qwen2.5-VL-3B`** comparison against a range of state-of-the-art proprietary and open-source models.
 
 ## WeatherQA Dataset
 
@@ -205,50 +205,72 @@ Below is an example of the few-shot/0-shot test dataset structure in JSON format
 }
 ```
 ## Benchmark
-The benchmark script is designed to evaluate the performance of different proprietary language models (GPT, Gemini, Claude) using either few-shot or zero-shot w/o CoT.\
+The benchmark script is designed to evaluate the performance of different proprietary and open-source multimodal language models on WeatherQA.\
 The script uses the WeatherQA dataset to test the models' ability to predict the affected area and classify the development potential of severe convection based on the provided images and time from Mesoscale Analysis.
 
 ![WeatherQA Benchmark](./figure/WeatherQA_bench.jpg)
 
 ### Benchmark Results
 
-Performance of various pre-trained models on the WeatherQA benchmark tasks.
+Zero-shot performance of a range of proprietary and open-source models on the WeatherQA benchmark tasks, along with the fine-tuned `Qwen2.5-VL-3B` model.
 
-**Task 1: Accuracy of Areas Affected Multi-choice Question**
+**Task 1: Zero-shot Accuracy on the Areas Affected QA Task**
 
-| Model                     | 0-shot     | 1-shot     | 3-shot     | 0-shot-CoT | 3-shot-CoT |
-| :------------------------ | :--------- | :--------- | :--------- | :--------- | :--------- |
-| Claude 3 Opus             | 20.67%     | /          | /          | 19.17%     | /          |
-| Claude 3.5 Sonnet         | 41.17% | /          | /          | **41.50%** | /          |
-| GPT-4 Turbo               | 21.33%     | 24.17%     | 27.00%     | 23.50%     | 23.33%     |
-| GPT-4o                    | 36.83%     | **35.67%** | 38.83%     | 38.17%     | **39.33%** |
-| Gemini Flash 1.5          | 30.67%     | 33.00%     | 34.33%     | 31.17%     | 30.67%     |
-| Gemini Pro 1.5            | 31.50%     | **35.67%** | **39.00%** | 33.56%     | 33.06%     |
-| Gemini Flash 2.0          | **43.17%** | /          | /          | /          | /          |
-| Phi 3.5 Vision Instruct   | 20.00%     | /          | /          | 19.67%     | /          |
-| Qwen2 VL 7B               | 21.33%     | /          | /          | 22.67%     | /          |
-| InternVL 2 8B             | 23.50%     | /          | /          | 24.17%     | /          |
-| InternVL 2 26B            | 23.33%     | /          | /          | 23.67%     | /          |
-| InternVL 2 40B            | 25.33%     | /          | /          | 25.17%     | /          |
+| Model | Accuracy |
+| :---- | :------- |
+| Qwen3-VL-4B (Finetuned) | **67.5%** |
+| Gemini 3.0 | **48.0%** |
+| GPT-5.2 | 43.5% |
+| Gemini 2.0 | 43.2% |
+| Gemini Flash 2.0 | 43.17% |
+| GPT-5.1 | 43.0% |
+| Gemini 2.5 | 41.7% |
+| Gemini Flash 2.5 | 41.67% |
+| Claude 3.5 Sonnet | 41.50% |
+| GPT-4o | 38.17% |
+| Gemini Pro 1.5 | 33.56% |
+| Gemini 1.5 | 30.7% |
+| Qwen2.5 VL 7B | 26.67% |
+| InternVL 2 40B | 25.33% |
+| InternVL 2 8B | 24.17% |
+| InternVL 2 26B | 23.67% |
+| GPT-4 Turbo | 23.50% |
+| Qwen2 VL 7B | 22.67% |
+| Qwen3-VL-4B | 21.5% |
+| GPT-4T | 21.3% |
+| Claude 3 Opus | 20.67% |
+| Phi 3.5 Vision | 20.00% |
+| Qwen2.5 VL 3B | 16.33% |
 
-**Task 2: Accuracy of Severe Weather Concern Multi-choice Question**
+**Task 2: Zero-shot Accuracy on the Severe Weather Concern Classification Task based on correctly identified Areas Affected**
 
-| Model                     | 0-shot     | 1-shot     | 3-shot      | 0-shot-CoT | 3-shot-CoT |
-| :------------------------ | :--------- | :--------- | :---------- | :--------- | :--------- |
-| Claude 3 Opus             | 1.33%      | /          | /           | 0.67%      | /          |
-| Claude 3.5 Sonnet         | 6.0%       | /          | /           | **8.67%**  | /          |
-| GPT-4 Turbo               | 1.83%      | 4.5%       | 1.0%        | 0.83%      | 2.0%       |
-| GPT-4o                    | 5.67%      | 7.83%      | **11.33%**  | 5.33%      | 4.83%      |
-| Gemini Flash 1.5          | 3.17%      | 7.17%      | 7.17%       | 1.17%      | 2.17%      |
-| Gemini Pro 1.5            | 2.0%       | **9.83%**  | 10.5%       | 1.5%       | **8.18%**  |
-| Gemini Flash 2.0          | **12.50%** | /          | /           | /          | /          |
-| Phi 3.5 Vision Instruct   | 1.33%      | /          | /           | 1.00%      | /          |
-| Qwen2 VL 7B               | 2.5%       | /          | /           | 3.0%       | /          |
-| InternVL2-40B             | 2.17%      | /          | /           | 3.0%       | /          |
-| InternVL2-26B             | 1.83%      | /          | /           | 1.17%      | /          |
-| InternVL2-8B              | 3.0%       | /          | /           | 3.0%       | /          |
+| Model | Accuracy |
+| :---- | :------- |
+| Qwen3-VL-4B (Finetuned) | **53.6%** |
+| Gemini 3.0 | **21.5%** |
+| GPT-5.1 | 18.6% |
+| GPT-5.2 | 14.6% |
+| Gemini Flash 2.0 | 12.50% |
+| Gemini 2.0 | 12.5% |
+| Gemini 1.5 | 10.3% |
+| Gemini Flash 2.5 | 9.20% |
+| Gemini 2.5 | 9.2% |
+| Claude 3.5 Sonnet | 8.67% |
+| GPT-4T | 8.6% |
+| GPT-4o | 5.67% |
+| Qwen2.5 VL 7B | 4.37% |
+| Qwen3-VL-4B | 3.1% |
+| Qwen2.5 VL 3B | 3.06% |
+| Qwen2 VL 7B | 3.00% |
+| InternVL 2 8B | 3.00% |
+| InternVL 2 40B | 3.00% |
+| Gemini Pro 1.5 | 2.00% |
+| GPT-4 Turbo | 1.83% |
+| InternVL 2 26B | 1.83% |
+| Claude 3 Opus | 1.33% |
+| Phi 3.5 Vision | 1.33% |
 
-*Note: Task 2 evaluations were conducted solely on questions where the Areas Affected part (Task 1) was correctly identified in the response.*
+*Note: Task 2 evaluations were conducted solely on questions where the Areas Affected answer (Task 1) was correctly identified in the response.*
 
 ---
 
